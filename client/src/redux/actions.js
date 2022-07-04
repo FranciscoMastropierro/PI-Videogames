@@ -9,6 +9,7 @@ export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const FILTER_BY_EA = 'FILTER_BY_EA';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_RATING = 'ORDER_BY_RATING' 
+export const SET_LOADING = 'SET_LOADING'
 
 const URL_VIDEOGAMES = "http://localhost:3001/videogames/";
 const URL_GET = "http://localhost:3001/videogame/";
@@ -17,13 +18,15 @@ const URL_GENRES = 'http://localhost:3001/genres';
 export const getVideogames = () => {
     return async function (dispatch){
         try {
+        dispatch(setLoading(true));
+
         const {data} = await axios.get(URL_VIDEOGAMES);
         return dispatch({type : GET_VIDEOGAMES, payload : data})
             
         } catch (error) {
             console.log(error);
             return error;
-        }
+        } finally {dispatch(setLoading(false))}
     }
 };
 
@@ -99,19 +102,30 @@ export const postVideogame = (videogame) => {
     }
 };
 
+export const setLoading = (state) => {
+    return function (dispatch){
+        return dispatch({type:SET_LOADING, payload : state })
+    }
+};
+
 export const getDetail = (id) => {
     return async function (dispatch){
         try {
+        dispatch(setLoading(true));
 
         const {data} = await axios.get(URL_GET+id);
         // console.log(data)
         
+
         return dispatch({type : GET_DETAIL, payload : data})
             
         } catch (error) {
             console.log(error);
             // return error;
-        }
+        } finally {dispatch(setLoading(false))}
     }
 };
+
+
+
 

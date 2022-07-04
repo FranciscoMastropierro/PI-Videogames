@@ -205,7 +205,7 @@ export default function CreateVideogame() {
           <input
             type='range'
             max={5}
-            step={0.1}
+            step={0.01}
             onChange={handleChange}
             value={input.rating}
             name= 'rating'>

@@ -6,3 +6,35 @@
     margin: 1rem;
     padding: 1rem;
 }
+
+.filter-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    margin: 1rem;
+}
+
+.select-container{
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+    border: 1px solid green;
+    margin: .5rem;
+    padding: .5rem;
+    gap: 20px;
+
+
+}
+
+.select{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.reload{
+    display: flex;
+    justify-content: center;
+    margin: .5rem;
+    
+}
