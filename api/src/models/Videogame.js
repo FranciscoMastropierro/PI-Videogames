@@ -30,6 +30,9 @@ module.exports = (Sequelize) => {
       type : DataTypes.STRING,
       allowNull: false
     },
+    image : {
+      type : DataTypes.STRING,
+    },
     inBd : {
       type : DataTypes.BOOLEAN,
       allowNull : false,

@@ -1,0 +1,7 @@
+.paginated-container{
+    display: flex;
+    justify-content: space-around;
+    max-width: 300px;
+    margin: auto;
+    margin-block: 10px;
+}

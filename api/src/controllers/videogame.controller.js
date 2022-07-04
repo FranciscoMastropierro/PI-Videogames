@@ -31,7 +31,7 @@ module.exports = {
     
                 }
     
-                console.log(aux)
+                // console.log(aux)
                 res.send(aux)
 
             } catch (error) {
@@ -57,7 +57,7 @@ module.exports = {
 
                 const aux = {
                     name : videogame.getDataValue('name'), 
-                    image : 'background_image',
+                    image : videogame.getDataValue('image'),
                     genres : videogame.getDataValue('Genres').map(e => e.name),
                     description : videogame.getDataValue('description'),
                     released : videogame.getDataValue('released'), 
