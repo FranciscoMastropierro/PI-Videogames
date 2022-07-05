@@ -1,10 +1,38 @@
 .gamecard-container{
-    width: 200px;
-    border: 1px solid rgba(38, 0, 255, 0.848);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    
+    width: 250px;
+    box-shadow: 0px 0px 10px gray;
+    padding-bottom: 0;
+    
 }
+
 
 .gamecard-title{
     color: black;
     text-decoration: none;
     
+}
+
+.gamecard-container img {
+    height: 200px;
+    width: 200px;
+}
+
+.gamecard-container h4{
+    background-color: #007483c7;
+    width: 100%;
+    color: white;
+    padding: 5px;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    margin: 0;
+}
+.genres-container{
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
 }

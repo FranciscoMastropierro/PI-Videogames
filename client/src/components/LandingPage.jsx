@@ -5,11 +5,17 @@ import './styles/LandingPage.css';
 
 export default function LandingPage() {
   return (
+    <div className='container-general'>
     <div className='container-landing'>
-        <h1 className='title'>Bienvenidos</h1>
+      <div>
+        <h1 className='title'>Welcome to the jungle</h1>
+      </div>
+      <div>
         <Link to={`/videogames`} >
-            <button>Enter</button>
+            <button className='enter-button'>Enter</button>
         </Link>
+      </div> 
+    </div>
     </div>
   )
 }

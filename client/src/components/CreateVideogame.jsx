@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { postVideogame, getGenres } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import './styles/CreateVideogame.css'
 
 export function validate(input){
   let errors = {};
@@ -57,7 +58,7 @@ export default function CreateVideogame() {
   const [errors, setErrors] = useState ({});
 
   useEffect(() => {
-    dispatch(getGenres());
+    if (allGenres.length === 0) dispatch(getGenres());
     setErrors(validate(input));
   }, [dispatch, input])
 
@@ -151,33 +152,46 @@ export default function CreateVideogame() {
   }
 
   return (
-    <div>
-      <h1>Create your videogame</h1>
+    <div className='container-create'>
+      <div className="container-all">
+
+      <div className ='title-container'>
+        <h1 className='title-create'>Create your videogame</h1>
+      </div>
+      
       <form>
-        <div>
-          <label>Name:</label>
-          <input
-            type='text'
-            onChange={handleChange}
-            value={input.name}
-            name= 'name'
-            className={errors.name && 'danger'}/>
-            {errors.name ? (
-              <p>
-                <small>{errors.name}</small>
-              </p>
-            ) : ( false )}
-        </div>
+      <div>
+        <div className='option-container'>
           <div>
+              <label >Name:</label>
+              <input
+                type='text'
+                onChange={handleChange}
+                value={input.name}
+                name= 'name'
+                placeholder='videogame'
+                className={errors.name && 'danger'}/>
+          </div>
+
+          <div className='option-error'>
+                {errors.name ? (
+                  <p>
+                    <small>{errors.name}</small>
+                  </p>
+                ) : ( false )}
+          </div>
+        </div>
+          <div className='option-container'>
           <label>Image:</label>
           <input
             type='text'
             onChange={handleChange}
             value={input.image}
+            placeholder='URL image'
             name= 'image'>
           </input>
         </div>
-        <div>
+        <div className='option-container'>
           <label>Released:</label>
           <input
             type='date'
@@ -186,21 +200,22 @@ export default function CreateVideogame() {
             name= 'released'>
           </input>
         </div>
-        <div>
+        <div className='option-container'>
           <label>Description:</label>
-          <input
+          <textarea
             type='text' 
             onChange={handleChange}
             value={input.description}
             name= 'description'
+            placeholder='Your description'
             className={errors.description && 'danger'}/>
             {errors.description ? (
               <p>
-                <small>{errors.description}</small>
+                <small className='option-error'>{errors.description}</small>
               </p>
             ) : ( false )}
         </div>
-        <div>
+        <div className='option-container'>
           <label>Rating (0 a 5):</label>
           <input
             type='range'
@@ -211,7 +226,7 @@ export default function CreateVideogame() {
             name= 'rating'>
           </input>
         </div>
-        <div>
+        <div className='option-container check-container'>
           <label>Platforms:</label>
           <label>
           <input
@@ -329,12 +344,12 @@ export default function CreateVideogame() {
         <br/>
           {errors.platforms ? (
               <p>
-                <small>{errors.platforms}</small>
+                <small className='option-error'>{errors.platforms}</small>
               </p>
             ) : ( false )}
         </div>
         <br/>
-        <div>
+        <div className='option-container'>
           <label>Genres:</label>
           <select onChange={e => handleChangeSelect(e)} >
           <option value={'All'}>---</option>
@@ -342,24 +357,27 @@ export default function CreateVideogame() {
           </select>
           {errors.genres ? (
               <p>
-                <small>{errors.genres}</small>
+                <small className='option-error'>{errors.genres}</small>
               </p>
             ) : ( false )}
-        </div>
         <br/>
         <label>Selected:</label><br/>
         {input.genres?.map(e =>{
           const genre = allGenres.find(elemt => elemt.id === e)
-          return <button key={genre.id} value={genre.name} onClick={e => handleChangeSelect(e)}>{genre.name}</button>
+          return <button className='genre-button' key={genre.id} value={genre.name} onClick={e => handleChangeSelect(e)}>{genre.name}</button>
         })}
+        </div>
         {/* {JSON.stringify(input)} */}
         <br></br>
         <input 
         type='submit' 
         value='Create' 
-        disabled={errors.name || errors.description || errors.platforms ? true : false} 
+        disabled={errors.name || errors.description || errors.platforms || errors.genres ? true : false} 
         onClick={e => handleSubmit(e)}/>
+      </div>
       </form>
+
+      </div>
     </div>
   )
 }

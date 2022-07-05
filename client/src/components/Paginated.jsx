@@ -9,12 +9,12 @@ export default function Paginated ({videogamesPerPage, allVideogames, setCurrent
     }
     return(
             <div className='paginated-container'>
-                <button disabled={currentPage === 1} onClick={()=> setCurrentPage(prev => --prev)}>{'<'}</button>
+                <button className='button' disabled={currentPage === 1} onClick={()=> setCurrentPage(prev => --prev)}>{'<'}</button>
                 <div>
                 <span>Page: </span>
                 <button>{currentPage}</button>
                 </div>
-                <button disabled={currentPage === pageNumbers.length} onClick={()=> setCurrentPage(prev => ++prev)}>{'>'}</button>
+                <button className='button' disabled={currentPage === pageNumbers.length} onClick={()=> setCurrentPage(prev => ++prev)}>{'>'}</button>
             </div>       
         
 

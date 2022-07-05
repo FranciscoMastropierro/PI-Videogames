@@ -1,0 +1,30 @@
+.container-nav{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0px 10px gray;
+    padding: 10px;
+}
+
+.container-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.button{
+    border-radius: .5rem;
+    transition-duration: 0.4s;
+    background-color: #007483;
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+.button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.title-nav{
+    margin: .5rem;
+    padding: .5rem;
+}

@@ -32,7 +32,7 @@ export default function Videogames() {
 
   function handleFilterGenres(e) {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
     dispatch(filterVideogamesByGenres(e.target.value));
     setCurrentPage(1);
     setOrder(`Ordenado ${e.target.value}`);
@@ -64,12 +64,14 @@ export default function Videogames() {
   }
 
   useEffect(() => {
-    dispatch(getVideogames());
-    dispatch(getGenres());
+    if(allVideogames.length === 0){
+      dispatch(getGenres());
+      dispatch(getVideogames());
+    }    
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="container-all">
       <div className="filter-container">
         <div className="select-container">
           <div className="select">
@@ -109,7 +111,7 @@ export default function Videogames() {
           </div>
         </div>
         <div className="reload">
-          <button onClick={(e) => handleClick(e)}>Reload Games</button>
+          <button className='button' onClick={(e) => handleClick(e)}>Reload Games</button>
         </div>
       </div>
       <Paginated

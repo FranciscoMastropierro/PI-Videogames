@@ -33,13 +33,15 @@ export const getVideogames = () => {
 export const getVideogamesByName = (name) => {
     return async function (dispatch){
         try {
+        dispatch(setLoading(true));
+
         const {data} = await axios.get(`${URL_VIDEOGAMES}?name=${name}`);
         return dispatch({type : GET_VIDEOGAMES_BY_NAME, payload : data})
             
         } catch (error) {
             console.log(error);
             return error;
-        }
+        } finally {dispatch(setLoading(false))}
     }
 };
 

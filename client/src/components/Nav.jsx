@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getVideogamesByName } from '../redux/actions';
+import './styles/Nav.css'
 
 export default function Nav() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [name, setName] = useState('');
 
  function handleInputChange(e){
@@ -13,26 +15,35 @@ export default function Nav() {
 
  function handleSubmit(e){
   e.preventDefault(e);
-  dispatch(getVideogamesByName(name))
+  dispatch(getVideogamesByName(name));
+  setName('');
+  history.push('/videogames')
  }
 
   return (
-    <div>
+    <div className='container-nav'>
+      <div className='container-buttons'>
+        <div>
       <input 
         type= 'text '
         name="search" 
         placeholder='Search by name' 
+        className='button'
         onChange={e => handleInputChange(e)}/>
 
-      <button type = 'submit' onClick={e => handleSubmit(e)}>Search</button>
-
+      <button type = 'submit'className='button' onClick={e => handleSubmit(e)}>Search</button>
+      </div>
+      <div>
       <Link to='/videogames'>
-        <button>Home</button>
+        <button className='button'>Home</button>
       </Link>
+      </div>
+      <div>
       <Link to = '/videogame'>
-        <button>Create videogame</button>
+        <button className='button'>Create videogame</button>
       </Link>
-      <h1>VideoGames!</h1>
+      </div>
+      </div>
     </div>
   )
 }
