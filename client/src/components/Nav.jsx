@@ -7,16 +7,16 @@ import './styles/Nav.css'
 export default function Nav() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
  function handleInputChange(e){
     setName(e.target.value)
  }
 
  function handleSubmit(e){
-  e.preventDefault(e);
+  e.preventDefault();
   dispatch(getVideogamesByName(name));
-  setName('');
+  setName("")
   history.push('/videogames')
  }
 
@@ -25,10 +25,11 @@ export default function Nav() {
       <div className='container-buttons'>
         <div>
       <input 
-        type= 'text '
+        type= 'text'
         name="search" 
         placeholder='Search by name' 
         className='button'
+        value={name}
         onChange={e => handleInputChange(e)}/>
 
       <button type = 'submit'className='button' onClick={e => handleSubmit(e)}>Search</button>

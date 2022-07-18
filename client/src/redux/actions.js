@@ -40,8 +40,11 @@ export const getVideogamesByName = (name) => {
             
         } catch (error) {
             console.log(error);
-            return error;
-        } finally {dispatch(setLoading(false))}
+            if(error) alert(`Videogame name: ${name} not found!`);
+
+        } finally {
+            dispatch(setLoading(false));
+        }
     }
 };
 

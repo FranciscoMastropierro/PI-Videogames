@@ -1,5 +1,6 @@
-.container-all{
-    background-color: white;
+.border-all{
+    background-color: rgba(158, 231, 239, 0.493);
+    margin: 0;
 }
 .videogames-container{
     display: flex;
@@ -14,9 +15,11 @@
 .filter-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid blue;
     margin: 1rem;
-    
+    margin-top: 0;
+    padding:20px;
+    align-items:center;
+    border-radius: 10px;
 }
 
 .select-container{

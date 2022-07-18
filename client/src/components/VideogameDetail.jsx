@@ -21,7 +21,7 @@ const VideogameDetail = () => {
   return (
     <div className='detail-container'>
       <div className="button-back">
-        <Link to="/videogames">
+        <Link to='/videogames'>
           <button>Go Back</button>
         </Link>
       </div>
@@ -38,7 +38,7 @@ const VideogameDetail = () => {
             />
             <h1>{videogameDetail.name}</h1>
             <h3>{videogameDetail.genres}</h3>
-            <p>{videogameDetail.description}</p>
+            {videogameDetail.description}
             <h5>{videogameDetail.platforms}</h5>
           </Fragment>
         )}

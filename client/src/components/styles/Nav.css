@@ -1,5 +1,6 @@
 .container-nav{
     display: flex;
+    background-image: url('./Captura.PNG');
     flex-direction: column;
     box-shadow: 2px 0px 10px gray;
     padding: 10px;

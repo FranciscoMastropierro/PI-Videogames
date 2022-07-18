@@ -12,7 +12,7 @@ export default function GameCard({ name, image, genres, id }) {
         </Link>
         </div>
         <div className='image-container'>        
-          <img src= {image || URL } alt='not found'/>
+          <img src= {image?.includes('http') ? image : URL } alt='not found'/>
           </div>
         <div className='genres-container'>
         <h4>{genres}</h4>

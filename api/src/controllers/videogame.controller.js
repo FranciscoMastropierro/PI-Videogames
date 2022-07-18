@@ -75,5 +75,26 @@ module.exports = {
 
 
         
+    },
+
+    deleteVideogame : async (req, res) =>{
+        const {id} = req.params;
+        try {
+            // const videogame = await Videogame.findOne({
+            //     where: {id},
+            //     include : {
+            //         model :Genre
+            //     }
+            // });
+            
+            await Videogame.destroy({where :{id}})
+
+            res.status(200).send('Videogame deleted!')
+
+        } catch (error) {
+            console.log(error);
+            res.status(404).send(error);
+        }
+
     }
 };

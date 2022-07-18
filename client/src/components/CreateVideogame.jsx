@@ -60,7 +60,7 @@ export default function CreateVideogame() {
   useEffect(() => {
     if (allGenres.length === 0) dispatch(getGenres());
     setErrors(validate(input));
-  }, [dispatch, input])
+  }, [dispatch, input, allGenres.length])
 
   const handleChange = (e) =>{
     setInput({
@@ -195,6 +195,7 @@ export default function CreateVideogame() {
           <label>Released:</label>
           <input
             type='date'
+            max={new Date().toISOString().slice(0, 10)}
             onChange={handleChange}
             value={input.released}
             name= 'released'>
@@ -216,7 +217,7 @@ export default function CreateVideogame() {
             ) : ( false )}
         </div>
         <div className='option-container'>
-          <label>Rating (0 a 5):</label>
+          <label>Rating (0 to 5):</label>
           <input
             type='range'
             max={5}

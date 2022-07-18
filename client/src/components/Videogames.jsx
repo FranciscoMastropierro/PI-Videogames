@@ -68,10 +68,10 @@ export default function Videogames() {
       dispatch(getGenres());
       dispatch(getVideogames());
     }    
-  }, [dispatch]);
+  }, [dispatch, allVideogames.length]);
 
   return (
-    <div className="container-all">
+    <div className="border-all">
       <div className="filter-container">
         <div className="select-container">
           <div className="select">
@@ -114,13 +114,12 @@ export default function Videogames() {
           <button className='button' onClick={(e) => handleClick(e)}>Reload Games</button>
         </div>
       </div>
-      <Paginated
+      {!loading &&<Paginated
         videogamesPerPage={videogamesPerPage}
         allVideogames={allVideogames.length}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
-      />
-
+      />}
       <div className="videogames-container">
         {loading ? (
           <p>Loading</p>
@@ -136,12 +135,12 @@ export default function Videogames() {
           ))
         )}
       </div>
-      <Paginated
+     {!loading && <Paginated
         videogamesPerPage={videogamesPerPage}
         allVideogames={allVideogames.length}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
-      />
+      />}
     </div>
   );
 }

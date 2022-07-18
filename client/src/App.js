@@ -9,7 +9,7 @@ import {Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <Route exact path="/" render={() => <LandingPage  />} />
       <Route path="/:videogame" render={() => <Nav  />} />
       <Route exact path="/videogame" render={() => <CreateVideogame  />} />
